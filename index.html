@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
 </head>
 <body>
-    
+    <section id="user_input">
+        <form action="javascript:addBookToLibrary()">
+        <label for="Title">Title:</label>
+        <input id="title">
+        <label for="Author">Author:</label>
+        <input id="author">
+        <label for="Read Status">Read Status:</label>
+        <select id="read_status" name="read_status">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+        <input type="submit" value="Submit">
+        </form>
+    </section>
+    <section id="library">
+        <div class="wrapper" id="books">
+        </div>
+    </section>
 </body>
 </html>
+<script src="main.js"></script>
