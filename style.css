@@ -1,3 +1,7 @@
 .remove {
     cursor: pointer;
 }
+
+.readStatus {
+    cursor: pointer;
+}
