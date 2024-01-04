@@ -6,16 +6,26 @@ const myLibrary = [
     }
 ];
 
-var author = document.querySelector("#author");
-var title = document.querySelector("#title");
-var read_status = document.querySelector("#read_status");
+const author_input = document.querySelector("#author");
+const title_input = document.querySelector("#title");
+const read_status_input = document.querySelector("#read_status");
 
 const books = document.querySelector("#books");
 
+var books_table;
+
+printLibrary();
+
 function updateInput(){
-    author = author.value;
-    title = title.value;
-    read_status = read_status.value;
+    author = author_input.value;
+    title = title_input.value;
+    read_status = read_status_input.value;
+}
+
+function resetInput(){
+    author_input.value = '';
+    title_input.value = '';
+    read_status_input.value = '';
 }
 
 function Book() {
@@ -26,13 +36,19 @@ function Book() {
 
 function addBookToLibrary() {
     updateInput();
+    if(title && author && read_status){
     const newBook = new Book(author, title, read_status);
     myLibrary.push(newBook);
     printLibrary();
+    resetInput();
+    }
 }
 
 function printLibrary() {
+    books_table = '<table>';
     myLibrary.forEach(element => {
-        books.innerHTML += `<h1>${element.title}</h1>`;
+        books_table += `<tr><td>${element.title}</td><td>${element.author}</td><td>${element.read_status}</td></tr>`;
     });
+    books_table += '</table>';
+    books.innerHTML = books_table;
 }
