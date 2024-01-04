@@ -46,9 +46,16 @@ function addBookToLibrary() {
 
 function printLibrary() {
     books_table = '<table>';
+    var counter = 0;
     myLibrary.forEach(element => {
-        books_table += `<tr><td>${element.title}</td><td>${element.author}</td><td>${element.read_status}</td></tr>`;
+        books_table += `<tr><td>${element.title}</td><td>${element.author}</td><td>${element.read_status}</td><td data-index='${counter}' class='remove' onclick='removeBook(${counter});'>x</td></tr>`;
+        counter++;
     });
     books_table += '</table>';
     books.innerHTML = books_table;
+}
+
+function removeBook(x) {
+    myLibrary.splice(x, 1);
+    printLibrary();
 }
