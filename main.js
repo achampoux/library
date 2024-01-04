@@ -48,7 +48,7 @@ function printLibrary() {
     books_table = '<table>';
     var counter = 0;
     myLibrary.forEach(element => {
-        books_table += `<tr><td>${element.title}</td><td>${element.author}</td><td class='readStatus' onclick='updateReadStatus(${counter});'>${element.read_status}</td><td class='remove' onclick='removeBook(${counter});'>x</td></tr>`;
+        books_table += `<tr><td>${element.title}</td><td class='separator'>―</td><td>${element.author}</td><td class='readStatus' onclick='updateReadStatus(${counter});'>${element.read_status}</td><td class='remove' onclick='removeBook(${counter});'>x</td></tr>`;
         counter++;
     });
     books_table += '</table>';

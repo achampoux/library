@@ -1,7 +1,35 @@
-.remove {
+ td.remove {
     cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: black;
+    color: white;
+    border-radius: 5px;
 }
 
-.readStatus {
+td.readStatus {
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: blueviolet;
+    color: white;
+    border-radius: 5px;
+}
+
+.main_wrapper {
+    width: 600px;
+    margin: auto;
+}
+
+div#books {
+    width: 400px;
+    margin: auto;
+    background: lightgray;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+section#user_input {
+    margin-top: 50px;
 }
