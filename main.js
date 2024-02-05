@@ -1,4 +1,4 @@
-const myLibrary = [
+myLibrary = [
     {
         author: 'John Doe',
         title: 'Lorem Ipsum',
@@ -6,61 +6,66 @@ const myLibrary = [
     }
 ];
 
-const author_input = document.querySelector("#author");
-const title_input = document.querySelector("#title");
-const read_status_input = document.querySelector("#read_status");
+AUTHOR_INPUT = document.querySelector("#author");
+TITLE_INPUT = document.querySelector("#title");
+READ_STATUS_INPUT = document.querySelector("#read_status");
 
-const books = document.querySelector("#books");
+BOOKS = document.querySelector("#books");
 
 var books_table;
 
-printLibrary();
+class Library {
 
-function updateInput(){
-    author = author_input.value;
-    title = title_input.value;
-    read_status = read_status_input.value;
+updateInput(){
+    this.author = AUTHOR_INPUT.value;
+    this.title = TITLE_INPUT.value;
+    this.read_status = READ_STATUS_INPUT.value;
 }
 
-function resetInput(){
-    author_input.value = '';
-    title_input.value = '';
-    read_status_input.value = '';
+resetInput(){
+    AUTHOR_INPUT.value = '';
+    TITLE_INPUT.value = '';
+    READ_STATUS_INPUT.value = '';
 }
 
-function Book() {
+constructor(title,author,read_status) {
     this.author = author;
     this.title = title;
     this.read_status = read_status;
 }
 
-function addBookToLibrary() {
-    updateInput();
-    if(title && author && read_status){
-    const newBook = new Book(author, title, read_status);
+addBookToLibrary() {
+    this.updateInput();
+    if(this.title && this.author && this.read_status){
+    const newBook = new Library(this.author, this.title, this.read_status);
     myLibrary.push(newBook);
-    printLibrary();
-    resetInput();
+    this.printLibrary();
+    this.resetInput();
     }
 }
 
-function printLibrary() {
+printLibrary() {
     books_table = '<table>';
     var counter = 0;
+    console.log(myLibrary);
     myLibrary.forEach(element => {
-        books_table += `<tr><td>${element.title}</td><td class='separator'>―</td><td>${element.author}</td><td class='readStatus' onclick='updateReadStatus(${counter});'>${element.read_status}</td><td class='remove' onclick='removeBook(${counter});'>x</td></tr>`;
+        books_table += `<tr><td>${element.title}</td><td class='separator'>―</td><td>${element.author}</td><td class='readStatus' onclick='app.updateReadStatus(${counter});'>${element.read_status}</td><td class='remove' onclick='app.removeBook(${counter});'>x</td></tr>`;
         counter++;
     });
     books_table += '</table>';
-    books.innerHTML = books_table;
+    BOOKS.innerHTML = books_table;
 }
 
-function removeBook(x) {
+removeBook(x) {
     myLibrary.splice(x, 1);
-    printLibrary();
+    this.printLibrary();
 }
 
-function updateReadStatus(x) {
+updateReadStatus(x) {
     myLibrary[x].read_status = !myLibrary[x].read_status;
-    printLibrary();
+    this.printLibrary();
 }
+}
+
+let app = new Library;
+app.printLibrary();
